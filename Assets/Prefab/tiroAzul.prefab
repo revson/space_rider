@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 50449764016605356}
   - component: {fileID: 61286734372324238}
   - component: {fileID: 114077226206507568}
+  - component: {fileID: 114184529246799148}
   m_Layer: 0
   m_Name: tiroAzul
-  m_TagString: Untagged
+  m_TagString: tiro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +98,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60a0020d2c571464ab807f09cf231386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114184529246799148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1174237769283060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562c2aeaeeea7064b8c88041266b08ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212463144082155720

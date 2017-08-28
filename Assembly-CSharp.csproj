@@ -52,9 +52,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Script\_GC.cs" />
      <Compile Include="Assets\Script\becameInvisible.cs" />
+     <Compile Include="Assets\Script\IaInimigo.cs" />
      <Compile Include="Assets\Script\moveOffset.cs" />
+     <Compile Include="Assets\Script\onTimer.cs" />
+     <Compile Include="Assets\Script\onTrigger.cs" />
      <Compile Include="Assets\Script\Player.cs" />
+     <Compile Include="Assets\Script\spawn.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
