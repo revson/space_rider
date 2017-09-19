@@ -51,11 +51,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Script\_GC.cs" />
+     <Compile Include="Assets\Script\armaNave.cs" />
      <Compile Include="Assets\Script\becameInvisible.cs" />
+     <Compile Include="Assets\Script\gameOver.cs" />
      <Compile Include="Assets\Script\IaInimigo.cs" />
      <Compile Include="Assets\Script\moveOffset.cs" />
+     <Compile Include="Assets\Script\moverObjetos.cs" />
      <Compile Include="Assets\Script\onTimer.cs" />
      <Compile Include="Assets\Script\onTrigger.cs" />
      <Compile Include="Assets\Script\Player.cs" />

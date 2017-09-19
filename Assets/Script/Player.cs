@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	private _GC _GC;
+
 	private Rigidbody2D playerRb;
 	private Animator playerAnimator;
 
 	public float velocidade;
 	private int direcao;
-
-	public Transform arma;
-	public GameObject tiroPrefab;
-	public float forcaTiro;
 
     public float HpMax;
     public float HP;
@@ -20,23 +18,38 @@ public class Player : MonoBehaviour {
     public GameObject explosaoPrefab;
 
     public Transform barraHp;
+
+	public GameObject[] armas;
+	public int powerupColetados;
+
+	private Transform top, down, left, right;
     
 
 	// Use this for initialization
 	void Start () {
+
+		_GC = FindObjectOfType (typeof(_GC)) as _GC;
+		top = GameObject.Find ("top").transform;
+		down = GameObject.Find ("down").transform;
+		left = GameObject.Find ("left").transform;
+		right = GameObject.Find ("right").transform;
+
+
 		playerRb = GetComponent<Rigidbody2D> ();
 		playerAnimator = GetComponent<Animator> ();
+		barraHp = GameObject.Find ("BarraVida").transform;
+		barraHp.localScale = new Vector3 (1,1,1);
         HP = HpMax;
         percVida = HP / HpMax;
+		armas [powerupColetados].SetActive(true);
+
+
         
 	}
 
 	void Update(){
        
 
-		if(Input.GetButtonDown("Fire1") ){
-			atirar ();
-		}
 	}
 	
 	// Update is called once per frame
@@ -53,19 +66,23 @@ public class Player : MonoBehaviour {
 		}
 
 
-
-
-
 		playerRb.velocity = new Vector2 (movimentoX * velocidade, movimentoY * velocidade);
+
+		if(transform.position.x < left.position.x){
+			transform.position = new Vector3 (left.position.x, transform.position.y, transform.position.z);
+		}else if(transform.position.x > right.position.x){
+			transform.position = new Vector3 (right.position.x, transform.position.y, transform.position.z);
+		}else if(transform.position.y > top.position.y){
+			transform.position = new Vector3 (transform.position.x, top.position.y, transform.position.z);
+		}else if(transform.position.y < down.position.y){
+			transform.position = new Vector3 (transform.position.x, down.position.y, transform.position.z);
+		}
+
 		playerAnimator.SetInteger ("direcao", direcao);
 
 	}
 
-	void atirar(){
-		GameObject tempPrefab = Instantiate (tiroPrefab) as GameObject;
-		tempPrefab.transform.position = arma.position;
-		tempPrefab.GetComponent<Rigidbody2D> ().AddForce (new Vector2(0, forcaTiro));
-	}
+
 
     void OnTriggerEnter2D(Collider2D col) {
 
@@ -73,6 +90,11 @@ public class Player : MonoBehaviour {
             case "tiroInimigo":
                 tomarDano(1);
                 break;
+
+		case "powerUp":
+				Destroy (col.gameObject);
+				powerUp ();
+				break;
         }
     }
 
@@ -105,6 +127,17 @@ public class Player : MonoBehaviour {
         //Instantiate(explosaoPrefab, transform.position, Quaternion.identity);
         GameObject tempPrefab = Instantiate(explosaoPrefab) as GameObject;
         tempPrefab.transform.position = transform.position;
+		_GC.morreu ();
          Destroy(this.gameObject);
     }
+
+	void powerUp(){
+		powerupColetados += 1;
+		if (powerupColetados <= armas.Length - 1) {
+			armas [powerupColetados].SetActive (true);
+		}
+		_GC.pontos += 250;
+	}
+
+
 }

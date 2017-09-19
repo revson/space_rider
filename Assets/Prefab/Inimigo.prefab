@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533204815946342}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 1.51, y: 5.5, z: 0}
+  m_LocalPosition: {x: -3.7161717, y: -0.042925358, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4348994454008114}
@@ -180,13 +180,15 @@ MonoBehaviour:
   tiroPrefab: {fileID: 1174237769283060, guid: d0b172711804e9c43978e209fbe25f51, type: 2}
   forcaTiro: -300
   tempoCurva: 3
-  chanceMudanca: 50
+  aleatorio: 0
   chanceTiro: 75
   tempoTiro: 1.5
   HP: 3
   explosaoPrefab: {fileID: 1865379925185016, guid: 8ab976a667778f445aab1f7093d33f2d,
     type: 2}
   pontosGanhos: 5
+  loot: {fileID: 1696786691336976, guid: cfea706871a26ec4d9a7853dd32952d3, type: 2}
+  chanceDrop: 1000
 --- !u!212 &212925847442187814
 SpriteRenderer:
   m_ObjectHideFlags: 1

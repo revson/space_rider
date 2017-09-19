@@ -20,7 +20,7 @@ public class IaInimigo : MonoBehaviour {
     private int movimentoY;
 
     public float tempoCurva;
-    public int chanceMudanca;
+    public int aleatorio;
     private float tempoTime;
     private int range;
 
@@ -33,6 +33,9 @@ public class IaInimigo : MonoBehaviour {
     public GameObject explosaoPrefab;
 
     public int pontosGanhos;
+
+	public GameObject loot;
+	public float chanceDrop;
 
     // Use this for initialization
     void Start () {
@@ -53,7 +56,7 @@ public class IaInimigo : MonoBehaviour {
             tempoTime = 0;
             range = Random.Range(0,100);
             
-            if (range <= chanceMudanca) {
+			if (range <= aleatorio) {
                 range = Random.Range(0, 100);
 
                
@@ -128,6 +131,13 @@ public class IaInimigo : MonoBehaviour {
         tempPrefab.transform.position = transform.position;
         tempPrefab.GetComponent<Rigidbody2D>().velocity = new Vector2(0, velocidade * -1);
         _GC.pontos += pontosGanhos;
+
+		aleatorio = Random.Range (0, 100);
+
+		if(aleatorio <= chanceDrop){
+			Instantiate(loot, transform.position, transform.rotation);
+		}
+
         Destroy(this.gameObject);
     }
 }
